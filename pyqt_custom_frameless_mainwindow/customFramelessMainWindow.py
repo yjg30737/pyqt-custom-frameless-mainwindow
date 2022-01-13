@@ -1,5 +1,5 @@
 from PyQt5.QtGui import QCursor
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtCore import Qt, QPoint
 
 
@@ -38,7 +38,7 @@ class CustomFramelessMainWindow(QMainWindow):
         rect.setHeight(self.rect().height()-self.__margin*2)
 
         if rect.contains(p):
-            # cursor inside of widget
+            # reshape cursor for moving
             self.unsetCursor()
             self.__cursor = self.cursor()
 
@@ -49,7 +49,7 @@ class CustomFramelessMainWindow(QMainWindow):
 
             self.__hoveredOnEdge = False
         else:
-            # scale
+            # reshape cursor for resizing
             x = p.x()
             y = p.y()
 
@@ -199,12 +199,3 @@ class CustomFramelessMainWindow(QMainWindow):
             # moving end
             self.__moving = False
         return super().mouseReleaseEvent(e)
-
-
-if __name__ == "__main__":
-    import sys
-
-    app = QApplication(sys.argv)
-    customTitleBarWindow = CustomFramelessMainWindow()
-    customTitleBarWindow.show()
-    app.exec_()
