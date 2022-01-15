@@ -22,3 +22,6 @@ if __name__ == "__main__":
     example.show()
     app.exec_()
 ```
+
+## See also
+<a href="https://github.com/yjg30737/pyqt-system-specific-custom-frameless-widget.git">pyqt-system-specific-custom-frameless-widget</a>
