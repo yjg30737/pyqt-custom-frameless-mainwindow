@@ -30,7 +30,7 @@ class CustomFramelessMainWindow(QMainWindow):
         self.setMouseTracking(True)
         self.setWindowFlags(Qt.FramelessWindowHint)
 
-    def __setSizeCursor(self, p):
+    def __setCursorShapeForCurrentPoint(self, p):
         rect = self.rect()
         rect.setX(self.rect().x()+self.__margin)
         rect.setY(self.rect().y()+self.__margin)
@@ -121,7 +121,7 @@ class CustomFramelessMainWindow(QMainWindow):
         else:
             p = e.pos()
             # reshaping cursor
-            self.__setSizeCursor(p)
+            self.__setCursorShapeForCurrentPoint(p)
             self.__hoveredOnEdge = not self.__isCursorHoveredOnInnerWidget(p)
             # if cursor shape indicates to resize
             if self.__hoveredOnEdge:
