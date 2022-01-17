@@ -10,11 +10,6 @@ class CustomFramelessMainWindow(QMainWindow):
         self.__cursor = QCursor()
         self.__rect = 0
 
-        self.__top = False
-        self.__bottom = False
-        self.__left = False
-        self.__right = False
-
         self.__min_width = 30
         self.__min_height = 30
 
@@ -24,11 +19,19 @@ class CustomFramelessMainWindow(QMainWindow):
         self.__offset = 0
         self.__moving = False
 
+        self.__initPosition()
+
         self.__initUi()
 
     def __initUi(self):
         self.setMouseTracking(True)
         self.setWindowFlags(Qt.FramelessWindowHint)
+
+    def __initPosition(self):
+        self.__top = False
+        self.__bottom = False
+        self.__left = False
+        self.__right = False
 
     def __setCursorShapeForCurrentPoint(self, p):
         rect = self.rect()
@@ -41,11 +44,7 @@ class CustomFramelessMainWindow(QMainWindow):
             # reshape cursor for moving
             self.unsetCursor()
             self.__cursor = self.cursor()
-
-            self.__top = False
-            self.__bottom = False
-            self.__right = False
-            self.__left = False
+            self.__initPosition()
         else:
             # reshape cursor for resizing
             x = p.x()
@@ -149,12 +148,3 @@ class CustomFramelessMainWindow(QMainWindow):
             # moving end
             self.__moving = False
         return super().mouseReleaseEvent(e)
-
-
-if __name__ == "__main__":
-    import sys
-
-    app = QApplication(sys.argv)
-    example = CustomFramelessMainWindow()
-    example.show()
-    app.exec_()
