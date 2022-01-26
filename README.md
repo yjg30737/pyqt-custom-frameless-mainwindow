@@ -1,5 +1,5 @@
 # pyqt-custom-frameless-mainwindow
-PyQt Custom Frameless Main Window (Enable to move and resize). I made this because i want to make system-independent frameless window. That is quite a chore to accomplish only by me.
+PyQt Custom Frameless Main Window (Enable to move and resize). I made this because i want to make system-independent frameless window. I have to admit, that is quite a chore to accomplish only by me.
 
 ## Requirements
 PyQt5 >= 5.8
